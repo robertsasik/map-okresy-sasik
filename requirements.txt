@@ -1,1 +1,7 @@
 streamlit
+sqlalchemy
+folium
+streamlit_folium
+geopandas
+matplotlib
+psycopg2
