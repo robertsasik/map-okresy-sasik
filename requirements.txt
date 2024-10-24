@@ -4,4 +4,4 @@ folium
 streamlit_folium
 geopandas
 matplotlib
-psycopg2
+psycopg2-binary
