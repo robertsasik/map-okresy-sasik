@@ -11,7 +11,7 @@ st.write(
 
 #Vytvorenie skrytých premenných na pripojenie do databázy
 host = st.secrets["p_host"]
-port = st.secrets["p_port"]
+port = int(st.secrets["p_port"])
 database = st.secrets["p_database"]
 user = st.secrets["p_user"]
 password = st.secrets["p_password"]
@@ -21,18 +21,22 @@ password = st.secrets["p_password"]
 #Vytvorenie funkcie na pripojenie na databázu
 def get_db_connection():
     db_connection_url = f"postgresql://{user}:{password}@{host}:{port}/{database}"
-    engine = create_engine(db_connection_url) 
+    engine = create_engine(db_connection_url)
+    engine.dispose() 
     return engine
 
 #Volanie funkcie pomocou premennej con
 con = get_db_connection()
+
 
 #SQL dopyt pomocou premennej sql
 sql = "SELECT * FROM hranice_okresy_1"
 
 #Pužitie geopandas na volanie relačnej tabuľky z PostgreSQL+Postgis databázy
 gdf = gpd.read_postgis(sql, con, geom_col='geom', crs = 5514)
-gdf
+
+#Zobrazenie interaktívnej tabuľky
+st.dataframe(gdf)
 
 #Konverzia súradnicového systému S-JTSK na WGS-84 pomocou geopandas
 gdf = gdf.to_crs(epsg=4326)
