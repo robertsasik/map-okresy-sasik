@@ -4,8 +4,6 @@ import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
 
-
-
 st.title("🗺️Interaktivna mapa okresov🌍")
 st.write(
     "Interaktívna mapa okresov SR pomocou frameworku streamlite a knižnice folium."
@@ -17,7 +15,6 @@ port = st.secrets["p_port"]
 database = st.secrets["p_database"]
 user = st.secrets["p_user"]
 password = st.secrets["p_password"]
-st.write(f"DB Username: {user}")
 
 @st.cache_resource #dekorátor pripojenia na databázové zdroje
 
