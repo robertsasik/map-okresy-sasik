@@ -4,4 +4,4 @@ folium
 streamlit_folium
 geopandas
 matplotlib
-psycopg2-binary
+psycopg2-binary #Psycopg2 nefunguje na webovej aplikacii streamlit, je lepsie pouzit psycopg2-binary, binarna verzia kniznice
